@@ -1,0 +1,9 @@
+.element__text {
+    margin: 0;
+    padding: 0;
+    max-width: 350px;
+    color: #000;
+    font-size: 20px;
+    line-height: 1.208;
+    font-weight: 600;
+}

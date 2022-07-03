@@ -1,33 +1,35 @@
-import Header from "./Header.js";
-import Footer from "./Footer.js";
-import CommentList from "./CommentList.js";
+import Header from "../dumb/Header.js";
+import Footer from "../dumb/Footer.js";
+import CommentList from "../dumb/CommentList.js";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addComment, fetchComments } from "../store/todoSlice.js";
-import { setAddCommentOpen, closeAllPopups } from "../store/popupSlice.js";
-import { setComment } from "../store/inputSlice.js";
+import { addComment, fetchComments } from "../../store/todoSlice.js";
+import { setAddCommentOpen, closeAllPopups } from "../../store/popupSlice.js";
+import { setComment } from "../../store/inputSlice.js";
 import { useEffect } from "react";
-import Popup from "./Popup.js";
+import Popup from "../dumb/Popup.js";
 
 function Task() {
-  const { id } = useParams();
+  const { id } = useParams(); // получение параметра id из route
+  /* подгрузка стейтов из Redux */
   const todos = useSelector((state) => state.todos.todos);
   const comments = useSelector((state) => state.todos.comments)
   const popup = useSelector((state) => state.popup);
   const input = useSelector((state) => state.input);
-  const task = todos.find((f) => f.id === id);
+
+  const task = todos.find((f) => f.id === id); // поиск по массиву задач задачи с id установленном в route
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchComments())
-  }, [dispatch]);
+  }, [dispatch]); // подгрузка комментариев с сервера
 
   const handleAddComment = (evt) => {
     evt.preventDefault();
     dispatch(addComment({id: id ,text: input.comment}));
     dispatch(closeAllPopups());
     dispatch(setComment(""));
-  };
+  }; // добавление нового комментария
 
   return (
     <>

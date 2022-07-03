@@ -1,5 +1,5 @@
-import Main from "./Main.js"
-import Task from "./Task.js";
+import Main from "../components/smart/Main.js"
+import Task from "../components/smart/Task.js";
 import { Route, Switch } from "react-router-dom";
 
 function App() {

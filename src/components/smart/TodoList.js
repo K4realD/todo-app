@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteComments, deleteTodo} from "../store/todoSlice";
+import { deleteComments, deleteTodo} from "../../store/todoSlice";
 
 function TodoList() {
+  /* подгрузка стейтов из Redux */
   const todos = useSelector((state) => state.todos.todos);
   const input = useSelector((state) =>(state.input));
   const comments = useSelector((state) => state.todos.comments);

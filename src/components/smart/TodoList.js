@@ -1,17 +1,17 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteComments, deleteTodo} from "../../store/todoSlice";
+import { deleteComments, deleteTodo } from "../../store/todoSlice";
 
 function TodoList() {
   /* подгрузка стейтов из Redux */
   const todos = useSelector((state) => state.todos.todos);
-  const input = useSelector((state) =>(state.input));
+  const input = useSelector((state) => state.input);
   const comments = useSelector((state) => state.todos.comments);
   const dispatch = useDispatch();
-  
+
   const filteredTodo = todos.filter((todo) => {
-      return todo.title.toLowerCase().includes(input.search.toLowerCase())
-  }) // реализация поиска по задачам
+    return todo.title.toLowerCase().includes(input.search.toLowerCase());
+  }); // реализация поиска по задачам, поиск работает на уровне пользователя и только с подгруженными задачами. Можно реализовать поиск через json-server
 
   return (
     <ul className="elements__list">
@@ -28,12 +28,14 @@ function TodoList() {
               onClick={() => {
                 comments.map((comment) => {
                   if (comment._id === todo.id) {
-                    dispatch(deleteComments(comment.id))
+                    dispatch(deleteComments(comment.id));
                   }
-                })
-                dispatch(deleteTodo(todo.id))
+                });
+                dispatch(deleteTodo(todo.id));
               }}
-            >&times;</button>
+            >
+              &times;
+            </button>
           </li>
         );
       })}

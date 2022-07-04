@@ -52,7 +52,7 @@ function Main() {
           ></button>
         </section>
         <section className="elements">
-        <Suspense fallback={<h2 className={"elemets__load"}>Загрузка...</h2>}>
+        <Suspense className={"elemets__load"} fallback={<h2 >Загрузка...</h2>}>
           <LazyTodoList />
         </Suspense>
           <button

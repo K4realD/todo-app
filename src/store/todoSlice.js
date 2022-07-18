@@ -21,7 +21,6 @@ export const addTodo = createAsyncThunk(
   async ({ title, text }, { rejectWithValue }) => {
     try {
       const todo = {
-        id: new Date().toISOString(),
         title: title,
         text: text,
       };
@@ -64,7 +63,6 @@ export const addComment = createAsyncThunk(
   async ({ id, text }, { rejectWithValue }) => {
     try {
       const comment = {
-        id: new Date().toISOString(),
         _id: id,
         text: text,
       };
@@ -107,7 +105,7 @@ export const deleteComments = createAsyncThunk(
   "todo/deleteComments",
   async (id, { rejectWithValue }) => {
     try {
-      const res = await fetch(`http://localhost:3100/?_id=${id}`, {
+      const res = await fetch(`http://localhost:3100/comments?id=${id}`, {
         method: "DELETE",
       });
       if (!res.ok) {

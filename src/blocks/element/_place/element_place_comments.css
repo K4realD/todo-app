@@ -1,7 +1,0 @@
-.element_place_comments {
-    align-self: start;
-}
-
-.element_place_comments:nth-child(even) {
-    align-self: flex-end;
-}

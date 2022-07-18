@@ -22,9 +22,9 @@
       "text": "New task that must be completed"
     },
     {
-      "id": "2022-07-04T19:44:24.656Z",
-      "title": "Тестовая задача 2",
-      "text": "New task that must be completed"
+      "title": "Kirill",
+      "text": "New task that must be completed",
+      "id": "I_AKUfq"
     }
   ],
   "comments": [
@@ -74,9 +74,29 @@
       "text": "Третий коммент 3"
     },
     {
-      "id": "2022-07-02T18:45:00.503Z",
-      "_id": "3",
-      "text": "asd"
+      "_id": "2022-07-04T19:44:24.656Z",
+      "text": "Новый комментарий",
+      "id": "QSmuGUL"
+    },
+    {
+      "_id": "2022-07-04T19:44:12.761Z",
+      "text": "Новый комментарий",
+      "id": "4bekZQm"
+    },
+    {
+      "_id": "2022-07-04T19:44:24.656Z",
+      "text": "asdsad",
+      "id": "ZjqA6hV"
+    },
+    {
+      "_id": "2022-07-04T19:44:12.761Z",
+      "text": "Новый комментарий",
+      "id": "NwGWccQ"
+    },
+    {
+      "_id": "I_AKUfq",
+      "text": "Новый комментарий",
+      "id": "qLYp1t0"
     }
   ]
 }

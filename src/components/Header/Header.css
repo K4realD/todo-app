@@ -1,0 +1,19 @@
+.header {
+  max-width: 880px;
+  display: flex;
+  margin: 0 auto;
+  padding-bottom: 21px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+.header__title {
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+  font-size: 42px;
+  line-height: 1.143;
+  font-weight: 500;
+  font-family: "Inter";
+}

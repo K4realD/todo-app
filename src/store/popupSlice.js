@@ -6,6 +6,7 @@ const popupSlice = createSlice({
   initialState: {
     isAddTaskOpen: false,
     isAddCommentOpen: false,
+    isButtonActive: false
   },
   reducers: {
       setAddTaskOpen(state) {
@@ -17,10 +18,13 @@ const popupSlice = createSlice({
       closeAllPopups(state) {
           state.isAddTaskOpen = false;
           state.isAddCommentOpen = false;
+      },
+      toggleButtonActive(state, action) {
+        state.isButtonActive = action.payload;
       }
   },
 });
 
-export const {setAddTaskOpen, setAddCommentOpen, closeAllPopups} = popupSlice.actions;
+export const {setAddTaskOpen, setAddCommentOpen, closeAllPopups, toggleButtonActive} = popupSlice.actions;
 
 export default popupSlice.reducer;

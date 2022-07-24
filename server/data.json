@@ -20,11 +20,6 @@
       "id": "2022-07-04T19:44:12.761Z",
       "title": "Тестовая задача 1",
       "text": "New task that must be completed"
-    },
-    {
-      "title": "Kirill",
-      "text": "New task that must be completed",
-      "id": "I_AKUfq"
     }
   ],
   "comments": [
@@ -97,6 +92,16 @@
       "_id": "I_AKUfq",
       "text": "Новый комментарий",
       "id": "qLYp1t0"
+    },
+    {
+      "_id": "I_AKUfq",
+      "text": "New T",
+      "id": "nITsrHi"
+    },
+    {
+      "_id": "1",
+      "text": "Новый коммент",
+      "id": "Xz303Wm"
     }
   ]
 }

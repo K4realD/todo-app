@@ -16,6 +16,23 @@ export const fetchTodos = createAsyncThunk(
   }
 );
 
+export const fetchTasks = createAsyncThunk(
+  "todos/fetchTasks",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await fetch(`http://localhost:3100/todos`);
+      if (!res.ok) {
+        throw new Error("Серверная ошибка");
+      }
+      const data = await res.json();
+      return data;
+    }
+     catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const addTodo = createAsyncThunk(
   "todo/addTodo",
   async ({ title, text }, { rejectWithValue }) => {
@@ -56,7 +73,7 @@ export const fetchComments = createAsyncThunk(
       return rejectWithValue(err.message);
     }
   }
-); // Из-за ограничения json-server на deep root layers пришлось комменты вынести из объектов todo и работать с этим массивом в отрыве от массива todo
+); 
 
 export const addComment = createAsyncThunk(
   "todo/addComment",
@@ -131,7 +148,8 @@ const todoSlice = createSlice({
     comments: [],
     status: null,
     error: null,
-    limit: 3
+    limit: 3,
+    task: {id: "", title: "", text: ""}
   },
   reducers: {
     removeTodo(state, action) {
@@ -140,6 +158,9 @@ const todoSlice = createSlice({
     setLimit(state) {
       state.limit = state.limit + 3;
     },
+    setTask(state, action) {
+      state.task = state.todos.find((f) => f.id === action.payload);
+    }
   },
   extraReducers: {
     [fetchTodos.pending]: (state) => {
@@ -166,7 +187,15 @@ const todoSlice = createSlice({
       state.status = "loading";
       state.error = null;
     },
+    [fetchTasks.pending]: (state) => {
+      state.status = "loading";
+      state.error = null;
+    },
     [fetchTodos.fulfilled]: (state, action) => {
+      state.status = "resolved";
+      state.todos = action.payload;
+    },
+    [fetchTasks.fulfilled]: (state, action) => {
       state.status = "resolved";
       state.todos = action.payload;
     },
@@ -197,5 +226,5 @@ const todoSlice = createSlice({
     [deleteTodo.rejected]: setError,
   },
 });
-export const {removeTodo, setLimit} = todoSlice.actions
+export const {removeTodo, setLimit, setTask} = todoSlice.actions
 export default todoSlice.reducer;

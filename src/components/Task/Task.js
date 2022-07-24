@@ -1,9 +1,13 @@
 import Header from "../Header/Header.js";
-import Footer from "../Footer/Footer.js";
 import CommentList from "../CommentList/CommentList.js";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addComment, fetchComments } from "../../store/todoSlice.js";
+import {
+  addComment,
+  fetchTasks,
+  fetchComments,
+  setTask
+} from "../../store/todoSlice.js";
 import {
   setAddCommentOpen,
   closeAllPopups,
@@ -23,13 +27,21 @@ function Task() {
   const comments = useSelector((state) => state.todos.comments);
   const popup = useSelector((state) => state.popup);
   const input = useSelector((state) => state.input);
+  const task = useSelector((state) => state.todos.task)
 
-  const task = todos.find((f) => f.id === id);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchTasks());
     dispatch(fetchComments());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if(todos.length > 0) {
+      dispatch(setTask(id))
+    }
+  }, [dispatch, todos])
+
 
   useEffect(() => {
     if (input.comment.valid) {
@@ -63,13 +75,14 @@ function Task() {
 
   return (
     <>
+      {console.log(todos)}
+      {console.log(task)}
       <Header title={task.title} />
       <CommentList
         task={task}
         comments={comments}
         handleOpenComment={() => dispatch(setAddCommentOpen())}
       />
-      <Footer />
       <AddCommentPopup
         isActive={popup.isButtonActive}
         input={input}
@@ -77,7 +90,7 @@ function Task() {
         isOpen={popup.isAddCommentOpen}
         handleSubmit={handleAddComment}
         onClose={() => dispatch(closeAllPopups())}
-      ></AddCommentPopup>
+      />
     </>
   );
 }

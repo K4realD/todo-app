@@ -1,20 +1,19 @@
 import './App.css'
 import Main from "../Main/Main.js"
 import Task from "../Task/Task.js";
-import { Route, Switch } from "react-router-dom";
+import Layout from '../Layout/Layout.js';
+import { Route, Routes } from "react-router-dom";
 
 function App() {
 
   return (
     <div className="page">
-      <Switch>
-      <Route exact path="/">
-        <Main/>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Main/>} />
+          <Route path="/:id" element={<Task />} />
       </Route>
-      <Route path="/:id">
-        <Task />
-      </Route>
-      </Switch>
+      </Routes>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import "./Main.css";
 import Header from "../Header/Header.js";
-import Footer from "../Footer/Footer.js";
 import AddTaskPopup from "../AddTaskPopup/AddTaskPopup.js";
 import SetTodo from "../SetTodo/SetTodo.js";
 import { Suspense, useEffect, lazy } from "react";
@@ -117,7 +116,7 @@ function Main() {
           input={input.search}
           handleSearch={handleSetSearch}
           handleOpenPopup={() => dispatch(setAddTaskOpen())}
-        ></SetTodo>
+        />
         <Suspense className={"elemets__load"} fallback={<h2>Загрузка...</h2>}>
           <LazyTodoList
             handleLimit={handleSetLimit}
@@ -126,7 +125,6 @@ function Main() {
           />
         </Suspense>
       </main>
-      <Footer />
       <AddTaskPopup
         isOpen={popup.isAddTaskOpen}
         handleSubmit={handleAddTodo}
@@ -135,7 +133,7 @@ function Main() {
         handleChangeTitle={handleSetTitle}
         handleChangeText={handleSetText}
         isActive={popup.isButtonActive}
-      ></AddTaskPopup>
+      />
     </>
   );
 }

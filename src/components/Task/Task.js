@@ -75,8 +75,6 @@ function Task() {
 
   return (
     <>
-      {console.log(todos)}
-      {console.log(task)}
       <Header title={task.title} />
       <CommentList
         task={task}

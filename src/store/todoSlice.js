@@ -163,34 +163,7 @@ const todoSlice = createSlice({
     }
   },
   extraReducers: {
-    [fetchTodos.pending]: (state) => {
-      state.status = "loading";
-      state.error = null;
-    },
-    [addTodo.pending]: (state) => {
-      state.status = "loading";
-      state.error = null;
-    },
-    [deleteTodo.pending]: (state) => {
-      state.status = "loading";
-      state.error = null;
-    },
-    [deleteComments.pending]: (state) => {
-      state.status = "loading";
-      state.error = null;
-    },
-    [fetchComments.pending]: (state) => {
-      state.status = "loading";
-      state.error = null;
-    },
-    [addComment.pending]: (state) => {
-      state.status = "loading";
-      state.error = null;
-    },
-    [fetchTasks.pending]: (state) => {
-      state.status = "loading";
-      state.error = null;
-    },
+    
     [fetchTodos.fulfilled]: (state, action) => {
       state.status = "resolved";
       state.todos = action.payload;
